@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import Logo from '@/app/assets/logo.png'
 function Header() {
   const navList = [
     { name: "About", url: "/about" },
@@ -28,8 +30,8 @@ function Header() {
             ))}
           </ul>
         </div>
-        <Link href={"/"} className='btn btn-ghost text-xl'>
-          Logo
+        <Link href={"/"} className='btn btn-link text-xl decoration-transparent '>
+          <Image alt="Logo" src={Logo} width={50} height={50}/> <span className="font-bold text-primary">ImBa</span>
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>
