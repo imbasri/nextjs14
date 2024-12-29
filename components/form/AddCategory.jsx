@@ -1,19 +1,20 @@
 "use client";
 import { categoryCreate } from "@/actions/category";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
+import InpurtField from "./InpurtField";
+import ButtonSubmit from "./ButtonSubmit";
+import TextAreaField from "./TextAreaField";
+
 const AddCategory = () => {
   const [state, action] = useFormState(categoryCreate, undefined);
-  const { pending } = useFormStatus();
 
   return (
     <form action={action} className='mt-5'>
-      <label className='input input-bordered flex items-center gap-2'>
-        <input type='text' className='grow' name='name' placeholder='Insert Category Name' />
-      </label>
+      <InpurtField label='Category Name' placeholder='Insert Category Name' name='name' type='text' />
       {state?.errors?.name && <p className='text-red-500 mt-2'>{state?.errors?.name}</p>}
-      <button type='submit' className='btn btn-block btn-primary mt-5' disabled={pending}>
-        Create
-      </button>
+      <TextAreaField label='Description' placeholder='Insert Description' name='description' />
+      {state?.errors?.description && <p className='text-red-500 mt-2'>{state?.errors?.description}</p>}
+      <ButtonSubmit label='Create' />
     </form>
   );
 };

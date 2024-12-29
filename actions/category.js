@@ -9,6 +9,7 @@ export async function categoryCreate(state, formData) {
   await connectDB()
   const validatedFields = CategoryFormSchema.safeParse({
     name: formData.get("name"),
+    description: formData.get("description"),
   });
 
   // If any form fields are invalid, return early
@@ -18,15 +19,16 @@ export async function categoryCreate(state, formData) {
     };
   }
 
-  // Call the provider or db to create a user...
-  const { name } = validatedFields.data;
+  // Call the provider or db to create a category...
+  const { name, description } = validatedFields.data;
   try {
     const newCategory = await Categories({
       name,
+      description,
     });
     newCategory.save();
-    redirect("/dashboard/category");
   } catch (error) {
     console.log("🚀 ~ categoryCreate ~ error:", error);
   }
+  redirect("/dashboard/category");
 }

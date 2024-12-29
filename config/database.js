@@ -6,7 +6,10 @@ const connectDB = async () => {
         return
     }
     try {
-        await mongoose.connect(process.env.DATABASE)
+        await mongoose.connect(process.env.DATABASE,{
+            appName: "jobportal",
+            dbName: "jobportal"
+        })
         connection = true
     } catch (error) {
         console.log('🚀 ~ connectDB ~ error:', error)
