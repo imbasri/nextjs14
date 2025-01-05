@@ -67,3 +67,10 @@ export async function handleEditCategory(state, formData) {
   }
   redirect("/dashboard/category");
 }
+
+export async function handleDeleteCategory(id) {
+  await connectDB();
+  await Categories.findByIdAndDelete(id)
+
+  redirect("/dashboard/category")
+}

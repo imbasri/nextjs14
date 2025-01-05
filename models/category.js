@@ -1,6 +1,7 @@
-import { Schema,model,models } from "mongoose";
+import mongoose from "mongoose";
+const {Schema, model, models} = mongoose;   
 const categorySchema = new Schema({
-    name: {
+    name: {     
         type: String,
         required: true,
         min: [6,"Minimal 6 character"]

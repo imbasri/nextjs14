@@ -8,7 +8,10 @@ const connectDB = async () => {
     try {
         await mongoose.connect(process.env.DATABASE,{
             appName: "jobportal",
-            dbName: "jobportal"
+            dbName: "jobportal",
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            deprecationErrors: true
         })
         connection = true
     } catch (error) {
