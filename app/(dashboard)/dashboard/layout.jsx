@@ -3,7 +3,7 @@ import Sidebar from "@/components/dashboard/Sidebar";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import Error from "./error";
 
-const DashboardLayout = ({ children }) => {
+const layout = ({ children }) => {
   return (
     <main className='grid lg:grid-cols-5'>
       {/* sidebar only pc */}
@@ -21,4 +21,4 @@ const DashboardLayout = ({ children }) => {
   );
 };
 
-export default DashboardLayout;
+export default layout;
