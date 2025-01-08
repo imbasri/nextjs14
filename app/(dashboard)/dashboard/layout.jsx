@@ -1,7 +1,9 @@
 import NavDashboard from "@/components/dashboard/NavDashboard";
 import Sidebar from "@/components/dashboard/Sidebar";
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+import Error from "./error";
 
-const Layout = ({ children }) => {
+const DashboardLayout = ({ children }) => {
   return (
     <main className='grid lg:grid-cols-5'>
       {/* sidebar only pc */}
@@ -12,12 +14,11 @@ const Layout = ({ children }) => {
       <div className='lg:col-span-4'>
         <NavDashboard />
         <div className='py-16 px-4 sm:px-8 lg:px-16'>
-          {/* main content */}
-          {children}
+          <ErrorBoundary fallback={<Error />}>{children}</ErrorBoundary>
         </div>
       </div>
     </main>
   );
 };
 
-export default Layout;
+export default DashboardLayout;

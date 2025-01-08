@@ -9,7 +9,9 @@ const CategoryPage = async () => {
   try {
     const category = await Categories.find();
     categories = category;
-  } catch (error) {}
+  } catch (error) {
+    console.log('🚀 ~ CategoryPage ~ error:', error)
+  }
   return (
     <>
       <Link className='btn btn-primary btn-sm' href={"/dashboard/category/create"}>

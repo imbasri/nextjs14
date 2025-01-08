@@ -6,7 +6,8 @@ import { redirect } from "next/navigation";
 export async function categoryCreate(state, formData) {
   // Validate form fields
   // connectDB
-  await connectDB();
+  const connect = await connectDB();
+  console.log('🚀 ~ categoryCreate ~ connect:', connect)
   const validatedFields = CategoryFormSchema.safeParse({
     name: formData.get("name"),
     description: formData.get("description"),

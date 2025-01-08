@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from '@/app/assets/logo.png'
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 function Header() {
   const navList = [
     { name: "About", url: "/about" },
     { name: "Category", url: "/category" },
-    { name: "Create Category", url: "/category/reate" },
+    { name: "Create Category", url: "/category/create" },
   ];
   return (
     <div className='navbar bg-base-200 fixed top-0'>
@@ -44,7 +45,14 @@ function Header() {
         </ul>
       </div>
       <div className='navbar-end'>
-        <a className='btn'>Button</a>
+        <SignedOut>
+          <SignInButton mode="modal">
+            <button className="btn btn-primary text-white">Login</button>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+         <Link href="/dashboard" className="btn btn-primary text-white no-underline">Dashboard</Link>
+        </SignedIn>
       </div>
     </div>
   );

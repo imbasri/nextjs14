@@ -2,6 +2,7 @@ import Logo from "@/app/assets/logo.png";
 import Link from "next/link";
 import Image from "next/image";
 import DashboardList from "@/utils/DashboardNavList";
+import { SignedIn, SignOutButton } from "@clerk/nextjs";
 const NavDashboard = () => {
   return (
     <div className='navbar bg-base-200'>
@@ -31,9 +32,11 @@ const NavDashboard = () => {
       <Image src={Logo} width={30} height={30} alt="logo" />
       </div>
       <div className='navbar-end'>
-        <button className='btn btn-error'>
-          Logout
-        </button>
+       <SignedIn>
+        <SignOutButton>
+          <button className="btn btn-primary text-white">Logout</button>
+        </SignOutButton>
+       </SignedIn>
       </div>
     </div>
   );

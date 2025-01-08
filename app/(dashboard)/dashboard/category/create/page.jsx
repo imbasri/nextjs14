@@ -1,7 +1,7 @@
 import AddCategory from "@/components/form/AddCategory";
 import React from "react";
 
-const CreateCatory = () => {
+const CreateCategory = () => {
   return (
     <>
       <h1 className='text-primary font-bold text-3xl'>Create Category</h1>
@@ -10,4 +10,4 @@ const CreateCatory = () => {
   );
 };
 
-export default CreateCatory;
+export default CreateCategory;

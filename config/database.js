@@ -2,21 +2,15 @@ import mongoose from "mongoose";
 let connection = false
 const connectDB = async () => {
     if (connection) {
-        console.log('🚀 ~ connectDB ~ connection:', connection)
-        return
+        return connection
     }
     try {
-        await mongoose.connect(process.env.DATABASE,{
-            appName: "jobportal",
-            dbName: "jobportal",
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            deprecationErrors: true
-        })
-        connection = true
+        const connect = await mongoose.connect(process.env.DATABASE)
+        connection = connect
     } catch (error) {
-        console.log('🚀 ~ connectDB ~ error:', error)
+        console.log('🚀 ~ connectDB ~ error:', error)   
     }
+    return connection
 }
 
 export default connectDB
